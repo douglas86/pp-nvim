@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end
 })
 
-vim.api.nvim_create_autocmd("BufWinLeave", {
+vim.api.nvim_create_autocmd({ "BufWinLeave", "FocusLost", "TabLeave", "InsertEnter" }, {
   nested = true,
   -- closes nerdtree on nerdtree exit
   callback = function ()
