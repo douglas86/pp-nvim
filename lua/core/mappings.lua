@@ -17,8 +17,8 @@ M.general = {
 
   n = {
     -- quit vim
-    ["q"] = { "<cmd> q <CR>" },
-    ["Q"] = { "<cmd> qall <CR>" },
+    ["q"] = { "<cmd> q <CR>", "quit a vim window" },
+    ["Q"] = { "<cmd> qall <CR>", "quit vim" },
 
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
