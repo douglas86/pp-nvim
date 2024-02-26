@@ -133,6 +133,17 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+-- nerdtree autocommands
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function ()
+    -- this will quit vim if nerdtree is the only file that is open
+    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+      vim.cmd "quit"
+    end
+  end
+})
+
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command
 
