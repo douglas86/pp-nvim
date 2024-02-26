@@ -1,5 +1,12 @@
 local plugins = {
   {
+    "arnamak/stay-centered.nvim",
+    lazy = false,
+    config = function ()
+      require("stay-centered").setup()
+    end,
+  },
+  {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
     cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
