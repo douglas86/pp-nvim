@@ -3,7 +3,7 @@ local M = {}
 M.dap = {
   plugin = true,
   n = {
-    ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>"},
+    ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>", "toggle breakpoint"},
   }
 }
 
@@ -13,7 +13,8 @@ M.dap_python = {
     ["<leader>dpr"] = {
       function ()
         require("dap-python").test_method()
-      end
+      end,
+      "run test method"
     }
   }
 }
@@ -21,7 +22,7 @@ M.dap_python = {
 M.lazygit = {
   plugin = true,
   n = {
-    ["<c-g>"] = {"<cmd> LazyGit <CR>"}
+    ["<c-g>"] = {"<cmd> LazyGit <CR>", "toggle lazygit"}
   }
 }
 
