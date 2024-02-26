@@ -16,6 +16,10 @@ M.general = {
   },
 
   n = {
+    -- quit vim
+    ["q"] = { "<cmd> bd <CR>" },
+    ["Q"] = { "<cmd> qall <CR>" },
+
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
