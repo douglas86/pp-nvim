@@ -17,7 +17,7 @@ M.general = {
 
   n = {
     -- quit vim
-    ["q"] = { "<cmd> bd <CR>" },
+    ["q"] = { "<cmd> q <CR>" },
     ["Q"] = { "<cmd> qall <CR>" },
 
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
