@@ -144,6 +144,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end
 })
 
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  nested = true,
+  -- closes nerdtree on nerdtree exit
+  callback = function ()
+    vim.cmd "NvimTreeClose"
+  end
+})
+
+
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command
 
