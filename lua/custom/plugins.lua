@@ -1,12 +1,46 @@
 local plugins = {
   {
+    "stevearc/conform.nvim",
+    lazy = false,
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>f",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          python = { "isort", "black" },
+          javascipt = { "prettier" },
+          css = { "prettier" },
+          htmldjango = { "djlint" },
+        },
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        }
+      })
+    end,
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end
+  },
+  {
     "kazhala/close-buffers.nvim",
     lazy = false,
   },
   {
     "arnamak/stay-centered.nvim",
     lazy = false,
-    config = function ()
+    config = function()
       require("stay-centered").setup()
     end,
   },
@@ -15,18 +49,18 @@ local plugins = {
     ft = "markdown",
     cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && npm install",
-    init = function ()
+    init = function()
       vim.g.mkdp_theme = 'light'
       vim.g.mkdp_auto_start = 1
     end,
-    config = function ()
+    config = function()
       vim.keymap.set("n", "<Leader>mp", "<Plug>MarkdownPreview", { desc = "Markdown Preview" })
     end
   },
   {
     "shatur/neovim-session-manager",
     lazy = false,
-    config = function ()
+    config = function()
       local Path = require("plenary.path")
       local config = require("session_manager.config")
       require("session_manager").setup({
@@ -50,7 +84,7 @@ local plugins = {
   {
     "kdheepak/lazygit.nvim",
     lazy = false,
-    config = function ()
+    config = function()
       require("core.utils").load_mappings("lazygit")
     end,
     dependencies = {
@@ -61,15 +95,15 @@ local plugins = {
   {
     "0x00-ketsu/autosave.nvim",
     lazy = false,
-    config = function ()
+    config = function()
       local autosave = require("autosave")
       autosave.setup({
         enable = true,
         prompt_style = 'stdout',
-        prompt_message = function ()
+        prompt_message = function()
           return 'Autosave: saved at ' .. vim.fn.strftime('%H:%M:%S')
         end,
-        events = {'InsertLeave', 'TextChanged'},
+        events = { 'InsertLeave', 'TextChanged' },
         conditions = {
           exists = true,
           modifiable = true,
@@ -84,25 +118,25 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
-    config = function ()
+    config = function()
       local dap = require("dap")
       local dapui = require("dapui")
       dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function ()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
-      dap.listeners.before.event_terminated["dapui_config"] = function ()
+      dap.listeners.before.event_terminated["dapui_config"] = function()
         dapui.close()
       end
-      dap.listeners.before.event_exited["dapui_config"] = function ()
+      dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
     end
   },
   {
     "mfussenegger/nvim-dap",
-    config = function ()
-      require("core.utils") .load_mappings("dap")
+    config = function()
+      require("core.utils").load_mappings("dap")
     end
   },
   {
@@ -120,7 +154,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python"},
+    ft = { "python" },
     opts = function()
       return require "custom.configs.null-ls"
     end,

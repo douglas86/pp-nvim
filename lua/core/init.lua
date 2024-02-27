@@ -136,7 +136,7 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 -- nerdtree autocommands
 vim.api.nvim_create_autocmd("BufEnter", {
   nested = true,
-  callback = function ()
+  callback = function()
     -- this will quit vim if nerdtree is the only file that is open
     if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
       vim.cmd "quit"
@@ -147,14 +147,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd({ "BufWinLeave", "FocusLost", "TabLeave", "InsertEnter" }, {
   nested = true,
   -- closes nerdtree on nerdtree exit
-  callback = function ()
+  callback = function()
     vim.cmd "NvimTreeClose"
   end
 })
 
 -- close hidden buffers on BufLeave
 autocmd({ "BufLeave" }, {
-  callback = function ()
+  callback = function()
     vim.cmd "BDelete! hidden"
   end
 })
@@ -163,5 +163,5 @@ autocmd({ "BufLeave" }, {
 local new_cmd = vim.api.nvim_create_user_command
 
 new_cmd("NvChadUpdate", function()
-  require "nvchad.updater"()
+  require "nvchad.updater" ()
 end, {})
