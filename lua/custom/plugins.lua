@@ -1,5 +1,9 @@
 local plugins = {
   {
+    "kazhala/close-buffers.nvim",
+    lazy = false,
+  },
+  {
     "arnamak/stay-centered.nvim",
     lazy = false,
     config = function ()
@@ -27,7 +31,7 @@ local plugins = {
       local config = require("session_manager.config")
       require("session_manager").setup({
         session_dir = Path:new(vim.fn.stdpath('data'), 'session'),
-        session_filename_to_dir = session_filename_to_dir,
+        -- session_filename_to_dir = session_filename_to_dir,
         autoload_mode = config.AutoloadMode.CurrentDir,
         autosave_last_session = true,
         autosave_ignore_not_normal = true,
@@ -97,7 +101,7 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-    config = function (_, opts)
+    config = function ()
       require("core.utils") .load_mappings("dap")
     end
   },
@@ -108,7 +112,7 @@ local plugins = {
       "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    config = function(_, opts)
+    config = function()
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
       require("core.utils").load_mappings("dap_python")
