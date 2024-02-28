@@ -1,3 +1,8 @@
+-- Order of plugins
+-- Most important at the top
+-- Plugins that will be lazy loaded false
+-- All other Plugins after that
+
 local plugins = {
   {
     -- Description: This plugin is used to autoformat code on save
