@@ -25,6 +25,7 @@ local plugins = {
         "mypy",
         "ruff",
         "pyright",
+        "emmet-language-server",
       }
     }
   },
@@ -133,6 +134,7 @@ local plugins = {
           python = { "isort", "black" },
           javascipt = { "prettier" },
           css = { "prettier" },
+          html = { "djlint" },
           htmldjango = { "djlint" },
         },
         format_on_save = {
@@ -203,6 +205,30 @@ local plugins = {
     end,
     config = function()
       vim.keymap.set("n", "<Leader>mp", "<Plug>MarkdownPreview", { desc = "Markdown Preview" })
+    end
+  },
+  {
+    "olrtg/emmet-language-server",
+    ft = { "html", "htmldjango", "javascipt", "javascriptreact" },
+    config = function()
+      local lspconfig = require("lspconfig")
+
+      lspconfig.emmet_language_server.setup({
+        filetypes = { "html", "htmldjango", "javascipt", "javascriptreact" },
+        init_options = {
+          showAbbreviationSuggestions = true,
+          showExpandedAbbreviation = "always",
+          showSuggestionsAsSnippets = true,
+        }
+      })
+    end
+  },
+  {
+    "olrtg/nvim-emmet",
+    ft = { "html", "htmldjango", "javascipt", "javascriptreact" },
+    dependencies = "olrtg/emmet-language-server",
+    config = function()
+      vim.keymap.set({ "n", "v" }, '<leader>xe', require("nvim-emmet").wrap_with_abbreviation)
     end
   },
 }
