@@ -98,12 +98,6 @@ local plugins = {
     end,
   },
   {
-    -- Description: I use this plugin to close all hidden buffers
-    --   using and auto command
-    "kazhala/close-buffers.nvim",
-    lazy = false,
-  },
-  {
     -- Description: This plugin will handle all git commands
     --   using ctrl+g it opens up a new terminal for git
     "kdheepak/lazygit.nvim",

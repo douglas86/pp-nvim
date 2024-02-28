@@ -152,13 +152,6 @@ vim.api.nvim_create_autocmd({ "BufWinLeave", "FocusLost", "TabLeave", "InsertEnt
   end
 })
 
--- close hidden buffers on BufLeave
-autocmd({ "BufLeave" }, {
-  callback = function()
-    vim.cmd "BDelete! hidden"
-  end
-})
-
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command
 
