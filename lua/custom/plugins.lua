@@ -138,7 +138,7 @@ local plugins = {
           htmldjango = { "djlint" },
         },
         format_on_save = {
-          timeout_ms = 500,
+          timeout_ms = 3000, -- Format file after 3 seconds
           lsp_fallback = true,
         }
       })
