@@ -134,6 +134,7 @@ local plugins = {
           python = { "isort", "black" },
           javascipt = { "prettier" },
           css = { "prettier" },
+          json = { "prettier" },
           html = { "djlint" },
           htmldjango = { "djlint" },
         },

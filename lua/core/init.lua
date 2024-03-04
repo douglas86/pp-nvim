@@ -152,13 +152,6 @@ vim.api.nvim_create_autocmd({ "BufWinLeave", "FocusLost", "TabLeave", "InsertEnt
   end
 })
 
--- close all hidden buffers just before you leave nvim
-autocmd({ "VimLeavePre" }, {
-  callback = function()
-    vim.cmd "up | %bd | e#"
-  end
-})
-
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command
 
