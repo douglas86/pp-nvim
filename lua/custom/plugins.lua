@@ -135,6 +135,7 @@ local plugins = {
           javascipt = { "prettier" },
           css = { "prettier" },
           json = { "prettier" },
+          markdown = { "prettier" },
           html = { "djlint" },
           htmldjango = { "djlint" },
         },
